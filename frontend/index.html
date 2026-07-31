@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="dark" id="htmlRoot">
+<html lang="ar" dir="rtl" class="" id="htmlRoot">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,29 +12,29 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-slate-950 text-slate-100 dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans min-h-screen flex flex-col transition-colors duration-300 selection:bg-cyan-500 selection:text-white">
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans min-h-screen flex flex-col transition-colors duration-300 selection:bg-cyan-500 selection:text-white">
 
     <!-- Top Navigation Header -->
-    <header class="bg-slate-900/90 dark:bg-slate-900 bg-white/90 backdrop-blur border-b border-sky-900/30 dark:border-sky-900/40 sticky top-0 z-50 shadow-xl transition-colors duration-300">
+    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur border-b border-slate-200 dark:border-sky-900/40 sticky top-0 z-50 shadow-sm transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-4 space-x-reverse">
-                <div class="bg-gradient-to-br from-cyan-500 to-blue-600 text-white font-black px-4 py-2 rounded-xl text-lg shadow-lg shadow-cyan-500/20 tracking-wider flex items-center gap-2">
+                <div class="bg-gradient-to-br from-cyan-600 to-blue-700 text-white font-black px-4 py-2 rounded-xl text-lg shadow-md tracking-wider flex items-center gap-2">
                     <i class="fa-solid fa-shield-halved"></i> SudPay
                 </div>
-                <div class="hidden md:block border-r border-slate-300 dark:border-slate-800 pr-4">
+                <div class="hidden md:block border-r border-slate-200 dark:border-slate-800 pr-4">
                     <span class="text-xs font-bold text-slate-700 dark:text-slate-300 block">نظام الضمان المالي والوساطة الذكية</span>
-                    <span class="text-[10px] text-cyan-500 dark:text-cyan-400 font-mono">منصة التجارة الآمنة (مدفوعة)</span>
+                    <span class="text-[10px] text-cyan-600 dark:text-cyan-400 font-mono">منصة التجارة الآمنة (مدفوعة)</span>
                 </div>
             </div>
             
             <div class="flex items-center space-x-3 space-x-reverse">
                 <!-- زر تبديل الوضع (مظلم / فاتح) -->
-                <button onclick="toggleTheme()" class="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-cyan-600 dark:text-cyan-400 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 border border-slate-300 dark:border-slate-700 shadow-sm">
+                <button onclick="toggleTheme()" class="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-cyan-600 dark:text-cyan-400 px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 border border-slate-200 dark:border-slate-700 shadow-sm">
                     <i id="themeIcon" class="fa-solid fa-moon text-sm"></i>
                     <span id="themeText" class="hidden sm:inline">الوضع المظلم</span>
                 </button>
 
-                <div class="bg-slate-100 dark:bg-slate-900 border border-sky-500/30 rounded-xl px-3 py-1.5 text-xs flex items-center gap-2 shadow-inner">
+                <div class="bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-sky-500/30 rounded-xl px-3 py-1.5 text-xs flex items-center gap-2 shadow-inner">
                     <i class="fa-solid fa-signal text-cyan-500"></i>
                     <span>النظام: <strong class="text-cyan-600 dark:text-cyan-300 font-mono">متصل</strong></span>
                 </div>
@@ -43,135 +43,242 @@
     </header>
 
     <!-- Main Switcher Bar (فصل تام لبوابات الدخول لكل دور) -->
-    <nav class="bg-slate-900/80 dark:bg-slate-900/90 bg-white/80 backdrop-blur border-b border-sky-900/30 py-3 shadow-md transition-colors duration-300">
+    <nav class="bg-white/90 dark:bg-slate-900/90 backdrop-blur border-b border-slate-200 dark:border-sky-900/30 py-3 shadow-sm transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3">
             <div class="flex flex-wrap gap-2">
                 <!-- 1. دخول المشتري -->
-                <button onclick="switchRole('customer')" id="role-customer-btn" class="role-tab px-4 py-2.5 rounded-xl bg-cyan-600 text-white font-bold text-xs sm:text-sm transition shadow-lg shadow-cyan-600/30 flex items-center gap-2">
+                <button onclick="switchRole('customer')" id="role-customer-btn" class="role-tab px-4 py-2.5 rounded-xl bg-cyan-600 text-white font-bold text-xs sm:text-sm transition shadow-md flex items-center gap-2">
                     <i class="fa-solid fa-bag-shopping"></i> دخول المشتري
                 </button>
                 <!-- 2. دخول التاجر -->
-                <button onclick="switchRole('vendor')" id="role-vendor-btn" class="role-tab px-4 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-white hover:bg-slate-700 text-xs sm:text-sm font-bold transition flex items-center gap-2 border border-slate-300 dark:border-slate-700">
+                <button onclick="switchRole('vendor')" id="role-vendor-btn" class="role-tab px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-white hover:bg-cyan-600 text-xs sm:text-sm font-bold transition flex items-center gap-2 border border-slate-200 dark:border-slate-700">
                     <i class="fa-solid fa-store"></i> دخول التاجر
                 </button>
                 <!-- 3. دخول شركة الشحن -->
-                <button onclick="switchRole('carrier')" id="role-carrier-btn" class="role-tab px-4 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-white hover:bg-slate-700 text-xs sm:text-sm font-bold transition flex items-center gap-2 border border-slate-300 dark:border-slate-700">
+                <button onclick="switchRole('carrier')" id="role-carrier-btn" class="role-tab px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-white hover:bg-cyan-600 text-xs sm:text-sm font-bold transition flex items-center gap-2 border border-slate-200 dark:border-slate-700">
                     <i class="fa-solid fa-truck-fast"></i> دخول شركة الشحن
                 </button>
                 <!-- 4. دخول الإدارة والرقابة -->
-                <button onclick="switchRole('admin')" id="role-admin-btn" class="role-tab px-4 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-white hover:bg-slate-700 text-xs sm:text-sm font-medium transition flex items-center gap-2 border border-slate-300 dark:border-slate-700">
+                <button onclick="switchRole('admin')" id="role-admin-btn" class="role-tab px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-white hover:bg-cyan-600 text-xs sm:text-sm font-medium transition flex items-center gap-2 border border-slate-200 dark:border-slate-700">
                     <i class="fa-solid fa-chart-pie"></i> الإدارة
                 </button>
             </div>
-            <div id="roleIndicator" class="text-xs text-cyan-600 dark:text-cyan-400 font-mono bg-cyan-500/10 border border-cyan-500/20 px-3 py-1.5 rounded-lg">
+            <div id="roleIndicator" class="text-xs text-cyan-700 dark:text-cyan-400 font-mono bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/20 px-3 py-1.5 rounded-lg">
                 ● وضع التصفح الحالي: المشتري
             </div>
         </div>
     </nav>
 
     <!-- Main Content Workspace Container -->
-    <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1">
+    <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 space-y-6">
 
-        <!-- ================= 1. CUSTOMER PORTAL (المشتري + القائمة الرئيسية للمنتجات بصور حقيقية) ================= -->
+        <!-- ================= 1. CUSTOMER PORTAL (المشتري + 10 منتجات + ولايات السودان + شركات الشحن) ================= -->
         <section id="portal-customer" class="portal-section space-y-6">
+            
+            <!-- Authentication Bar for Customer -->
+            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-100 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-slate-800 dark:text-slate-200 block">بوابة المشتري الآمنة</span>
+                        <span class="text-[11px] text-slate-500">سجل الدخول برقم الهاتف أو البريد الإلكتروني لحفظ طلباتك ومعاملاتك</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <input type="text" id="customerAuthInput" placeholder="أدخل رقم الهاتف أو البريد الإلكتروني..." class="bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 px-3.5 py-2 rounded-xl text-xs w-full sm:w-64 font-mono">
+                    <button onclick="handleCustomerLogin()" class="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow transition">
+                        دخول / تسجيل
+                    </button>
+                </div>
+            </div>
+
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
-                <!-- Product Catalog (القائمة الرئيسية للمنتجات بالصور الاحترافية) -->
+                <!-- Product Catalog (10 منتجات احترافية) -->
                 <div class="lg:col-span-2 space-y-6">
-                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 rounded-2xl p-6 shadow-xl space-y-4 transition-colors duration-300">
+                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 rounded-2xl p-6 shadow-sm space-y-4 transition-colors duration-300">
                         <div class="flex items-center justify-between border-b border-slate-200 dark:border-sky-900/40 pb-3">
-                            <h2 class="text-base font-bold text-cyan-600 dark:text-cyan-400 flex items-center gap-2">
-                                <i class="fa-solid fa-icons"></i> القائمة الرئيسية للمنتجات المعتمدة (بضمان SudPay)
+                            <h2 class="text-base font-bold text-cyan-700 dark:text-cyan-400 flex items-center gap-2">
+                                <i class="fa-solid fa-icons"></i> القائمة الرئيسية للمنتجات المعتمدة (10 منتجات)
                             </h2>
                             <span class="text-xs text-slate-500 dark:text-slate-400">اختر منتجاً لإضافته لسلة الشراء الآمن</span>
                         </div>
                         
-                        <!-- شبكة المنتجات بالصور الاحترافية -->
+                        <!-- شبكة الـ 10 منتجات -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            
                             <!-- Product 1 -->
-                            <div onclick="selectProduct(1, 'لابتوب احترافي للتطوير والأعمال', 280000, 'متجر التقنية المتقدمة')" class="product-card border-2 border-cyan-500 bg-cyan-500/5 dark:bg-cyan-500/10 rounded-2xl p-4 cursor-pointer relative transition hover:scale-[1.01] overflow-hidden shadow-sm" data-id="1">
-                                <span class="absolute top-3 left-3 z-10 bg-cyan-500 text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-full shadow">الأكثر طلباً</span>
-                                <div class="w-full h-36 bg-slate-100 dark:bg-slate-950 rounded-xl mb-3 overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center">
-                                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80" alt="لابتوب" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                            <div onclick="selectProduct(1, 'لابتوب احترافي للتطوير والأعمال', 280000, 'متجر التقنية المتقدمة')" class="product-card border-2 border-cyan-600 bg-cyan-50/50 dark:bg-cyan-500/10 rounded-2xl p-4 cursor-pointer relative transition hover:scale-[1.01] overflow-hidden shadow-sm" data-id="1">
+                                <span class="absolute top-3 left-3 z-10 bg-cyan-600 text-white text-[10px] font-black px-2.5 py-1 rounded-full shadow">الأكثر طلباً</span>
+                                <div class="w-full h-32 bg-slate-100 dark:bg-slate-950 rounded-xl mb-3 overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+                                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=500&q=80" alt="لابتوب" class="w-full h-full object-cover">
                                 </div>
                                 <h3 class="font-bold text-sm text-slate-900 dark:text-white">لابتوب احترافي للتطوير والأعمال</h3>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1"><i class="fa-solid fa-store text-cyan-500 text-[10px]"></i> متجر التقنية المتقدمة</p>
-                                <p class="text-cyan-600 dark:text-cyan-400 font-extrabold text-base mt-3">280,000 <span class="text-xs font-normal">ج.س</span></p>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><i class="fa-solid fa-store text-cyan-600 text-[10px]"></i> متجر التقنية المتقدمة</p>
+                                <p class="text-cyan-700 dark:text-cyan-400 font-extrabold text-base mt-3">280,000 <span class="text-xs font-normal">ج.س</span></p>
                             </div>
                             
                             <!-- Product 2 -->
-                            <div onclick="selectProduct(2, 'هاتف ذكي بشريحتين 5G متطور', 150000, 'متجر الهواتف الذكية')" class="product-card border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-cyan-500/50 rounded-2xl p-4 cursor-pointer relative transition hover:scale-[1.01] overflow-hidden shadow-sm" data-id="2">
-                                <div class="w-full h-36 bg-slate-100 dark:bg-slate-950 rounded-xl mb-3 overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center">
-                                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" alt="هاتف" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                            <div onclick="selectProduct(2, 'هاتف ذكي بشريحتين 5G متطور', 150000, 'متجر الهواتف الذكية')" class="product-card border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-cyan-500 rounded-2xl p-4 cursor-pointer relative transition hover:scale-[1.01] overflow-hidden shadow-sm" data-id="2">
+                                <div class="w-full h-32 bg-slate-100 dark:bg-slate-950 rounded-xl mb-3 overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+                                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80" alt="هاتف" class="w-full h-full object-cover">
                                 </div>
                                 <h3 class="font-bold text-sm text-slate-900 dark:text-white">هاتف ذكي بشريحتين 5G متطور</h3>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1"><i class="fa-solid fa-store text-cyan-500 text-[10px]"></i> متجر الهواتف الذكية</p>
-                                <p class="text-cyan-600 dark:text-cyan-400 font-extrabold text-base mt-3">150,000 <span class="text-xs font-normal">ج.س</span></p>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><i class="fa-solid fa-store text-cyan-600 text-[10px]"></i> متجر الهواتف الذكية</p>
+                                <p class="text-cyan-700 dark:text-cyan-400 font-extrabold text-base mt-3">150,000 <span class="text-xs font-normal">ج.س</span></p>
                             </div>
 
                             <!-- Product 3 -->
-                            <div onclick="selectProduct(3, 'ساعة ذكية رياضية متطورة', 45000, 'متجر إكسسواراتي')" class="product-card border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-cyan-500/50 rounded-2xl p-4 cursor-pointer relative transition hover:scale-[1.01] overflow-hidden shadow-sm" data-id="3">
-                                <div class="w-full h-36 bg-slate-100 dark:bg-slate-950 rounded-xl mb-3 overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center">
-                                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="ساعة" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                            <div onclick="selectProduct(3, 'ساعة ذكية رياضية متطورة', 45000, 'متجر إكسسواراتي')" class="product-card border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-cyan-500 rounded-2xl p-4 cursor-pointer relative transition hover:scale-[1.01] overflow-hidden shadow-sm" data-id="3">
+                                <div class="w-full h-32 bg-slate-100 dark:bg-slate-950 rounded-xl mb-3 overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+                                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80" alt="ساعة" class="w-full h-full object-cover">
                                 </div>
                                 <h3 class="font-bold text-sm text-slate-900 dark:text-white">ساعة ذكية رياضية متطورة</h3>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1"><i class="fa-solid fa-store text-cyan-500 text-[10px]"></i> متجر إكسسواراتي</p>
-                                <p class="text-cyan-600 dark:text-cyan-400 font-extrabold text-base mt-3">45,000 <span class="text-xs font-normal">ج.س</span></p>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><i class="fa-solid fa-store text-cyan-600 text-[10px]"></i> متجر إكسسواراتي</p>
+                                <p class="text-cyan-700 dark:text-cyan-400 font-extrabold text-base mt-3">45,000 <span class="text-xs font-normal">ج.س</span></p>
                             </div>
 
                             <!-- Product 4 -->
-                            <div onclick="selectProduct(4, 'سماعات لاسلكية عازلة للصوت', 35000, 'متجر الصوتيات الرقمية')" class="product-card border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-cyan-500/50 rounded-2xl p-4 cursor-pointer relative transition hover:scale-[1.01] overflow-hidden shadow-sm" data-id="4">
-                                <div class="w-full h-36 bg-slate-100 dark:bg-slate-950 rounded-xl mb-3 overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center">
-                                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="سماعات" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                            <div onclick="selectProduct(4, 'سماعات لاسلكية عازلة للصوت', 35000, 'متجر الصوتيات الرقمية')" class="product-card border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-cyan-500 rounded-2xl p-4 cursor-pointer relative transition hover:scale-[1.01] overflow-hidden shadow-sm" data-id="4">
+                                <div class="w-full h-32 bg-slate-100 dark:bg-slate-950 rounded-xl mb-3 overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+                                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80" alt="سماعات" class="w-full h-full object-cover">
                                 </div>
                                 <h3 class="font-bold text-sm text-slate-900 dark:text-white">سماعات لاسلكية عازلة للصوت</h3>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1"><i class="fa-solid fa-store text-cyan-500 text-[10px]"></i> متجر الصوتيات الرقمية</p>
-                                <p class="text-cyan-600 dark:text-cyan-400 font-extrabold text-base mt-3">35,000 <span class="text-xs font-normal">ج.س</span></p>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><i class="fa-solid fa-store text-cyan-600 text-[10px]"></i> متجر الصوتيات الرقمية</p>
+                                <p class="text-cyan-700 dark:text-cyan-400 font-extrabold text-base mt-3">35,000 <span class="text-xs font-normal">ج.س</span></p>
                             </div>
+
+                            <!-- Product 5 -->
+                            <div onclick="selectProduct(5, 'كاميرا مراقبة ذكية منزلية', 65000, 'متجر البيت الذكي')" class="product-card border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-cyan-500 rounded-2xl p-4 cursor-pointer relative transition hover:scale-[1.01] overflow-hidden shadow-sm" data-id="5">
+                                <div class="w-full h-32 bg-slate-100 dark:bg-slate-950 rounded-xl mb-3 overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+                                    <img src="https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?auto=format&fit=crop&w=500&q=80" alt="كاميرا" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="font-bold text-sm text-slate-900 dark:text-white">كاميرا مراقبة ذكية منزلية</h3>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><i class="fa-solid fa-store text-cyan-600 text-[10px]"></i> متجر البيت الذكي</p>
+                                <p class="text-cyan-700 dark:text-cyan-400 font-extrabold text-base mt-3">65,000 <span class="text-xs font-normal">ج.س</span></p>
+                            </div>
+
+                            <!-- Product 6 -->
+                            <div onclick="selectProduct(6, 'شاحن محمول فائق السرعة 20000mAh', 25000, 'متجر إكسسوارات الموبايل')" class="product-card border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-cyan-500 rounded-2xl p-4 cursor-pointer relative transition hover:scale-[1.01] overflow-hidden shadow-sm" data-id="6">
+                                <div class="w-full h-32 bg-slate-100 dark:bg-slate-950 rounded-xl mb-3 overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+                                    <img src="https://images.unsplash.com/photo-1609592424154-bb3596735823?auto=format&fit=crop&w=500&q=80" alt="باوربانك" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="font-bold text-sm text-slate-900 dark:text-white">شاحن محمول فائق السرعة 20000mAh</h3>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><i class="fa-solid fa-store text-cyan-600 text-[10px]"></i> متجر إكسسوارات الموبايل</p>
+                                <p class="text-cyan-700 dark:text-cyan-400 font-extrabold text-base mt-3">25,000 <span class="text-xs font-normal">ج.س</span></p>
+                            </div>
+
+                            <!-- Product 7 -->
+                            <div onclick="selectProduct(7, 'حقيبة ظهر احترافية للاب توب ومقاومة للماء', 40000, 'متجر الحقائب العصرية')" class="product-card border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-cyan-500 rounded-2xl p-4 cursor-pointer relative transition hover:scale-[1.01] overflow-hidden shadow-sm" data-id="7">
+                                <div class="w-full h-32 bg-slate-100 dark:bg-slate-950 rounded-xl mb-3 overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+                                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80" alt="حقيبة" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="font-bold text-sm text-slate-900 dark:text-white">حقيبة ظهر احترافية للاب توب ومقاومة للماء</h3>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><i class="fa-solid fa-store text-cyan-600 text-[10px]"></i> متجر الحقائب العصرية</p>
+                                <p class="text-cyan-700 dark:text-cyan-400 font-extrabold text-base mt-3">40,000 <span class="text-xs font-normal">ج.س</span></p>
+                            </div>
+
+                            <!-- Product 8 -->
+                            <div onclick="selectProduct(8, 'لوحة مفاتيح وماوس لاسلكية للألعاب', 55000, 'متجر الجيمرز')" class="product-card border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-cyan-500 rounded-2xl p-4 cursor-pointer relative transition hover:scale-[1.01] overflow-hidden shadow-sm" data-id="8">
+                                <div class="w-full h-32 bg-slate-100 dark:bg-slate-950 rounded-xl mb-3 overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+                                    <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=500&q=80" alt="كيبورد" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="font-bold text-sm text-slate-900 dark:text-white">لوحة مفاتيح وماوس لاسلكية للألعاب</h3>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><i class="fa-solid fa-store text-cyan-600 text-[10px]"></i> متجر الجيمرز</p>
+                                <p class="text-cyan-700 dark:text-cyan-400 font-extrabold text-base mt-3">55,000 <span class="text-xs font-normal">ج.س</span></p>
+                            </div>
+
+                            <!-- Product 9 -->
+                            <div onclick="selectProduct(9, 'طابعة لاسلكية مدمجة للمكاتب والأعمال', 180000, 'متجر الحلول المكتبية')" class="product-card border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-cyan-500 rounded-2xl p-4 cursor-pointer relative transition hover:scale-[1.01] overflow-hidden shadow-sm" data-id="9">
+                                <div class="w-full h-32 bg-slate-100 dark:bg-slate-950 rounded-xl mb-3 overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+                                    <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=500&q=80" alt="طابعة" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="font-bold text-sm text-slate-900 dark:text-white">طابعة لاسلكية مدمجة للمكاتب والأعمال</h3>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><i class="fa-solid fa-store text-cyan-600 text-[10px]"></i> متجر الحلول المكتبية</p>
+                                <p class="text-cyan-700 dark:text-cyan-400 font-extrabold text-base mt-3">180,000 <span class="text-xs font-normal">ج.س</span></p>
+                            </div>
+
+                            <!-- Product 10 -->
+                            <div onclick="selectProduct(10, 'جهاز تنقية الهواء الرقمي للمنزل', 95000, 'متجر العناية المنزلية')" class="product-card border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-cyan-500 rounded-2xl p-4 cursor-pointer relative transition hover:scale-[1.01] overflow-hidden shadow-sm" data-id="10">
+                                <div class="w-full h-32 bg-slate-100 dark:bg-slate-950 rounded-xl mb-3 overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center">
+                                    <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=500&q=80" alt="منقي هواء" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="font-bold text-sm text-slate-900 dark:text-white">جهاز تنقية الهواء الرقمي للمنزل</h3>
+                                <p class="text-xs text-slate-500 mt-1 flex items-center gap-1"><i class="fa-solid fa-store text-cyan-600 text-[10px]"></i> متجر العناية المنزلية</p>
+                                <p class="text-cyan-700 dark:text-cyan-400 font-extrabold text-base mt-3">95,000 <span class="text-xs font-normal">ج.س</span></p>
+                            </div>
+
                         </div>
                     </div>
 
-                    <!-- Shipping Address Selection -->
-                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 rounded-2xl p-6 shadow-xl space-y-4 transition-colors duration-300">
-                        <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
-                            <i class="fa-solid fa-location-dot text-cyan-500"></i> اختر ولاية التوصيل والوجهة (متوافقة مع شركات الشحن)
-                        </h3>
+                    <!-- Shipping Address Selection (كل ولايات السودان 18 ولاية + اختيار شركة الشحن) -->
+                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 rounded-2xl p-6 shadow-sm space-y-4 transition-colors duration-300">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                            <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                                <i class="fa-solid fa-location-dot text-cyan-600"></i> اختر ولاية الوجهة في السودان وشركة الشحن المفضلة
+                            </h3>
+                            <select id="carrierSelect" class="bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-xs font-bold rounded-xl px-3 py-2 text-cyan-700 dark:text-cyan-300">
+                                <option value="البريد السوداني اللوجستية">شركة البريد السوداني</option>
+                                <option value="أرامكس السودان">أرامكس السودان</option>
+                                <option value="سبرينت للشحن السريع">سبرينت للشحن السريع</option>
+                                <option value="النيل للإمداد والشحن">النيل للإمداد والشحن</option>
+                            </select>
+                        </div>
+
+                        <!-- قائمة منسدلة لكل ولايات السودان الـ 18 -->
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <label class="border-2 border-cyan-500 bg-cyan-500/10 p-3.5 rounded-xl cursor-pointer flex flex-col justify-between text-xs transition shadow-sm">
-                                <div class="flex justify-between font-bold text-slate-900 dark:text-white"><span>بورتسودان</span> <input type="radio" name="state" checked onchange="updateShipping(4000)" class="accent-cyan-500"></div>
-                                <span class="text-cyan-600 dark:text-cyan-400 mt-2 font-mono font-bold">+4,000 ج.س</span>
-                            </label>
-                            <label class="border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 p-3.5 rounded-xl cursor-pointer flex flex-col justify-between text-xs transition shadow-sm">
-                                <div class="flex justify-between font-bold text-slate-900 dark:text-white"><span>كسلا</span> <input type="radio" name="state" onchange="updateShipping(6000)" class="accent-cyan-500"></div>
-                                <span class="text-slate-500 dark:text-slate-400 mt-2 font-mono">+6,000 ج.س</span>
-                            </label>
-                            <label class="border border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 p-3.5 rounded-xl cursor-pointer flex flex-col justify-between text-xs transition shadow-sm">
-                                <div class="flex justify-between font-bold text-slate-900 dark:text-white"><span>الخرطوم</span> <input type="radio" name="state" onchange="updateShipping(10000)" class="accent-cyan-500"></div>
-                                <span class="text-slate-500 dark:text-slate-400 mt-2 font-mono">+10,000 ج.س</span>
-                            </label>
+                            <div class="sm:col-span-2">
+                                <label class="text-xs text-slate-500 block mb-1 font-bold">اختر ولاية التوصيل (18 ولاية معتمدة):</label>
+                                <select id="stateSelect" onchange="updateStateShipping()" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl p-3 text-xs font-bold text-slate-800 dark:text-slate-100">
+                                    <option value="4000" data-name="البحر الأحمر (بورتسودان)">البحر الأحمر (بورتسودان) - 4,000 ج.س</option>
+                                    <option value="6000" data-name="كسلا">كسلا - 6,000 ج.س</option>
+                                    <option value="10000" data-name="الخرطوم">الخرطوم - 10,000 ج.س</option>
+                                    <option value="8000" data-name="نهر النيل (عطبرة)">نهر النيل (عطبرة) - 8,000 ج.س</option>
+                                    <option value="7500" data-name="الشمالية (دنقلا)">الشمالية (دنقلا) - 7,500 ج.س</option>
+                                    <option value="7000" data-name="القضارف">القضارف - 7,000 ج.س</option>
+                                    <option value="9000" data-name="الجزيرة (ود مدني)">الجزيرة (ود مدني) - 9,000 ج.س</option>
+                                    <option value="11000" data-name="سنار">سنار - 11,000 ج.س</option>
+                                    <option value="12000" data-name="النيل الأبيض (كستي)">النيل الأبيض (كوستي) - 12,000 ج.س</option>
+                                    <option value="13000" data-name="النيل الأزرق (الدمازين)">النيل الأزرق (الدمازين) - 13,000 ج.س</option>
+                                    <option value="12500" data-name="شمال كردفان (الأبيض)">شمال كردفان (الأبيض) - 12,500 ج.س</option>
+                                    <option value="14000" data-name="جنوب كردفان (كادوقلي)">جنوب كردفان (كادوقلي) - 14,000 ج.س</option>
+                                    <option value="15000" data-name="غرب كردفان (الفولة)">غرب كردفان (الفولة) - 15,000 ج.س</option>
+                                    <option value="14500" data-name="شمال دارفور (الفاشر)">شمال دارفور (الفاشر) - 14,500 ج.س</option>
+                                    <option value="15500" data-name="جنوب دارفور (نيالا)">جنوب دارفور (نيالا) - 15,500 ج.س</option>
+                                    <option value="15000" data-name="غرب دارفور (الجنينة)">غرب دارفور (الجنينة) - 15,000 ج.س</option>
+                                    <option value="16000" data-name="وسط دارفور (زالنجي)">وسط دارفور (زالنجي) - 16,000 ج.س</option>
+                                    <option value="16500" data-name="شرق دارفور (الضعين)">شرق دارفور (الضعين) - 16,500 ج.س</option>
+                                </select>
+                            </div>
+                            <div class="bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/30 p-3.5 rounded-xl flex flex-col justify-center">
+                                <span class="text-[11px] text-cyan-700 dark:text-cyan-400 block font-bold">تكلفة الشحن الحالية:</span>
+                                <span id="shippingCostDisplay" class="font-mono font-black text-cyan-800 dark:text-cyan-300 text-lg mt-1">4,000 ج.س</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Invoice Summary & Action Panel -->
-                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-6 transition-colors duration-300">
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 rounded-2xl p-6 shadow-sm flex flex-col justify-between space-y-6 transition-colors duration-300">
                     <div>
                         <h3 class="font-bold text-sm text-slate-800 dark:text-slate-200 border-b border-slate-200 dark:border-sky-900/40 pb-3 flex items-center justify-between">
-                            <span><i class="fa-solid fa-file-invoice-dollar text-cyan-500"></i> الفاتورة وتفاصيل الضمان</span>
+                            <span><i class="fa-solid fa-file-invoice-dollar text-cyan-600"></i> الفاتورة وتفاصيل الضمان</span>
                             <span class="text-xs text-cyan-600 dark:text-cyan-400 font-mono flex items-center gap-1"><i class="fa-solid fa-shield-check"></i> حماية 100%</span>
                         </h3>
                         <div class="space-y-3 mt-4 text-sm text-slate-600 dark:text-slate-300">
                             <div class="flex justify-between"><span>المنتج:</span> <span id="summaryProduct" class="font-bold text-slate-900 dark:text-white">لابتوب احترافي للتطوير والأعمال</span></div>
                             <div class="flex justify-between"><span>سعر السلعة:</span> <span id="summaryPrice" class="font-mono">280,000 ج.س</span></div>
                             <div class="flex justify-between"><span>رسوم الشحن:</span> <span id="summaryShipping" class="font-mono">4,000 ج.س</span></div>
-                            <div class="flex justify-between font-extrabold text-lg text-cyan-600 dark:text-cyan-400 border-t border-slate-200 dark:border-sky-900/40 pt-3">
+                            <div class="flex justify-between font-extrabold text-lg text-cyan-700 dark:text-cyan-400 border-t border-slate-200 dark:border-sky-900/40 pt-3">
                                 <span>الإجمالي المدفوع:</span> <span id="summaryTotal" class="font-mono">284,000 ج.س</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="space-y-3">
-                        <button onclick="executeEscrow()" id="escrowSubmitBtn" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-cyan-600/30 transition flex items-center justify-center gap-2 text-sm">
+                        <button onclick="executeEscrow()" id="escrowSubmitBtn" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3.5 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-sm">
                             <i class="fa-solid fa-lock"></i> تجميد المبلغ بحساب الضمان الآمن
                         </button>
                         <p class="text-[11px] text-center text-slate-500">الأموال محروسة بالمنصة ولاتُصرف للتاجر إلا برمز استلام OTP الخاص بك.</p>
@@ -180,48 +287,67 @@
             </div>
 
             <!-- Transaction Result Box -->
-            <div id="resultBox" class="hidden bg-white dark:bg-slate-900 border border-cyan-500/50 rounded-2xl p-6 space-y-4 shadow-2xl transition-colors duration-300">
-                <div class="flex items-center gap-3 text-cyan-600 dark:text-cyan-400 font-bold text-base">
+            <div id="resultBox" class="hidden bg-white dark:bg-slate-900 border border-cyan-500/50 rounded-2xl p-6 space-y-4 shadow-xl transition-colors duration-300">
+                <div class="flex items-center gap-3 text-cyan-700 dark:text-cyan-400 font-bold text-base">
                     <i class="fa-solid fa-circle-check text-xl"></i> تم تجميد المعاملة بنجاح وإنشاء كود الضمان!
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-100 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-sm font-mono">
-                    <div><span class="text-slate-500 block text-xs">رقم العملية (Order ID):</span> <span id="resOrderCode" class="text-cyan-600 dark:text-cyan-300 font-bold"></span></div>
-                    <div><span class="text-slate-500 block text-xs">رمز التأكيد للاستلام (OTP):</span> <span id="resOTP" class="text-emerald-500 dark:text-emerald-400 font-bold text-base"></span></div>
-                    <div><span class="text-slate-500 block text-xs">الحالة المالية:</span> <span class="text-amber-500 dark:text-amber-400 font-bold">محجوز بالضمان الآمن</span></div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-sm font-mono">
+                    <div><span class="text-slate-500 block text-xs">رقم العملية (Order ID):</span> <span id="resOrderCode" class="text-cyan-700 dark:text-cyan-300 font-bold"></span></div>
+                    <div><span class="text-slate-500 block text-xs">رمز التأكيد للاستلام (OTP):</span> <span id="resOTP" class="text-emerald-600 dark:text-emerald-400 font-bold text-base"></span></div>
+                    <div><span class="text-slate-500 block text-xs">الحالة المالية:</span> <span class="text-amber-600 dark:text-amber-400 font-bold">محجوز بالضمان الآمن</span></div>
                 </div>
             </div>
         </section>
 
-        <!-- ================= 2. VENDOR PORTAL (التاجر لوحده) ================= -->
+        <!-- ================= 2. VENDOR PORTAL (التاجر + تسجيل برقم الهاتف/البريد) ================= -->
         <section id="portal-vendor" class="portal-section hidden space-y-6">
+            <!-- Authentication Bar for Vendor -->
+            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-100 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-slate-800 dark:text-slate-200 block">لوحة تحكم التاجر المعتمد</span>
+                        <span class="text-[11px] text-slate-500">سجل الدخول برقم الهاتف أو البريد الإلكتروني لإدارة أرباحك ومنتجاتك</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <input type="text" id="vendorAuthInput" placeholder="رقم الهاتف أو الإيميل للتاجر..." class="bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 px-3.5 py-2 rounded-xl text-xs w-full sm:w-64 font-mono">
+                    <button onclick="handleVendorLogin()" class="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow transition">
+                        تسجيل دخول التاجر
+                    </button>
+                </div>
+            </div>
+
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 p-5 rounded-2xl shadow-xl transition-colors duration-300">
-                    <span class="text-xs text-slate-500 dark:text-slate-400 block flex items-center gap-1.5"><i class="fa-solid fa-wallet text-cyan-500"></i> الأرباح المتاحة للسحب الفوري</span>
-                    <p class="text-2xl font-black text-cyan-600 dark:text-cyan-400 mt-2 font-mono">980,000 <span class="text-xs font-normal">ج.س</span></p>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 p-5 rounded-2xl shadow-sm transition-colors duration-300">
+                    <span class="text-xs text-slate-500 block flex items-center gap-1.5"><i class="fa-solid fa-wallet text-cyan-600"></i> الأرباح المتاحة للسحب الفوري</span>
+                    <p class="text-2xl font-black text-cyan-700 dark:text-cyan-400 mt-2 font-mono">980,000 <span class="text-xs font-normal">ج.س</span></p>
                     <button onclick="alert('تم إرسال طلب تحويل الأرباح لحسابك البنكي بنجاح!')" class="mt-4 w-full bg-cyan-600 hover:bg-cyan-500 text-white text-xs py-2.5 rounded-xl font-bold transition shadow flex items-center justify-center gap-2">
                         <i class="fa-solid fa-money-bill-transfer"></i> سحب الأرباح الآن
                     </button>
                 </div>
-                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 p-5 rounded-2xl shadow-xl transition-colors duration-300">
-                    <span class="text-xs text-slate-500 dark:text-slate-400 block flex items-center gap-1.5"><i class="fa-solid fa-vault text-amber-500"></i> المبالغ المعلقة في الضمان (Escrow)</span>
-                    <p class="text-2xl font-black text-amber-500 dark:text-amber-400 mt-2 font-mono">430,000 <span class="text-xs font-normal">ج.س</span></p>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 p-5 rounded-2xl shadow-sm transition-colors duration-300">
+                    <span class="text-xs text-slate-500 block flex items-center gap-1.5"><i class="fa-solid fa-vault text-amber-500"></i> المبالغ المعلقة في الضمان (Escrow)</span>
+                    <p class="text-2xl font-black text-amber-600 dark:text-amber-400 mt-2 font-mono">430,000 <span class="text-xs font-normal">ج.س</span></p>
                     <span class="text-[10px] text-slate-500 block mt-4">تتحرر فور استلام العملاء وإدخالهم لرمز OTP</span>
                 </div>
-                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 p-5 rounded-2xl shadow-xl transition-colors duration-300">
-                    <span class="text-xs text-slate-500 dark:text-slate-400 block flex items-center gap-1.5"><i class="fa-solid fa-boxes-stacked text-cyan-500"></i> إجمالي المنتجات المعروضة بالقائمة</span>
-                    <p class="text-2xl font-black text-slate-800 dark:text-slate-100 mt-2 font-mono">4 منتجات نشطة</p>
-                    <span class="text-[10px] text-cyan-600 dark:text-cyan-400 block mt-4">إدارة القائمة والمخزون تعمل بكفاءة</span>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 p-5 rounded-2xl shadow-sm transition-colors duration-300">
+                    <span class="text-xs text-slate-500 block flex items-center gap-1.5"><i class="fa-solid fa-boxes-stacked text-cyan-600"></i> إجمالي المنتجات المعروضة بالقائمة</span>
+                    <p class="text-2xl font-black text-slate-800 dark:text-slate-100 mt-2 font-mono">10 منتجات نشطة</p>
+                    <span class="text-[10px] text-cyan-700 dark:text-cyan-400 block mt-4">إدارة القائمة والمخزون تعمل بكفاءة</span>
                 </div>
             </div>
             
-            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 rounded-2xl p-6 shadow-xl space-y-4 transition-colors duration-300">
-                <h3 class="font-bold text-sm text-cyan-600 dark:text-cyan-400 flex items-center gap-2">
+            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 rounded-2xl p-6 shadow-sm space-y-4 transition-colors duration-300">
+                <h3 class="font-bold text-sm text-cyan-700 dark:text-cyan-400 flex items-center gap-2">
                     <i class="fa-solid fa-clipboard-check"></i> إدارة طلبات العملاء الواردة ومطابقة رموز OTP
                 </h3>
                 <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-xs flex flex-col sm:flex-row justify-between items-center gap-4">
                     <div>
-                        <span class="text-cyan-600 dark:text-cyan-300 font-bold">طلب رقم: SD_849201</span>
-                        <p class="text-slate-500 dark:text-slate-400 mt-1">لابتوب احترافي للتطوير والأعمال - القيمة: 280,000 ج.س</p>
+                        <span class="text-cyan-700 dark:text-cyan-300 font-bold">طلب رقم: SD_849201</span>
+                        <p class="text-slate-500 mt-1">لابتوب احترافي للتطوير والأعمال - القيمة: 280,000 ج.س</p>
                     </div>
                     <div class="flex items-center gap-2 w-full sm:w-auto">
                         <input type="text" placeholder="رمز OTP للإفراج" class="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 px-3 py-2 rounded-lg text-xs font-mono w-40">
@@ -233,79 +359,98 @@
             </div>
         </section>
 
-        <!-- ================= 3. CARRIER PORTAL (شركة الشحن لوحدها تماماً) ================= -->
+        <!-- ================= 3. CARRIER PORTAL (شركة الشحن + تسجيل برقم الهاتف/البريد) ================= -->
         <section id="portal-carrier" class="portal-section hidden space-y-6">
-            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 rounded-2xl p-6 space-y-6 shadow-xl transition-colors duration-300">
+            <!-- Authentication Bar for Carrier -->
+            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-100 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-slate-800 dark:text-slate-200 block">بوابة شركات الشحن والخدمات اللوجستية</span>
+                        <span class="text-[11px] text-slate-500">سجل الدخول برقم الهاتف أو البريد الإلكتروني لإدارة شحنات الولايات وتجنب الضغط</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <input type="text" id="carrierAuthInput" placeholder="رقم الهاتف أو الإيميل للشركة..." class="bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 px-3.5 py-2 rounded-xl text-xs w-full sm:w-64 font-mono">
+                    <button onclick="handleCarrierLogin()" class="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow transition">
+                        دخول شركة الشحن
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 rounded-2xl p-6 space-y-6 shadow-sm transition-colors duration-300">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-200 dark:border-sky-900/40 pb-4">
                     <div>
-                        <h3 class="font-bold text-base text-cyan-600 dark:text-cyan-400 flex items-center gap-2">
-                            <i class="fa-solid fa-truck-fast"></i> بوابة شركة الشحن والخدمات اللوجستية المستقلة
+                        <h3 class="font-bold text-base text-cyan-700 dark:text-cyan-400 flex items-center gap-2">
+                            <i class="fa-solid fa-truck-fast"></i> لوحة تحكم شركة الشحن المستقلة
                         </h3>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">لوحة تحكم مخصصة لإدارة شحنات الولايات وتجنب أي ضغط تشغيلي على الشركاء</p>
+                        <p class="text-xs text-slate-500 mt-1">تحديد أسعار الولايات الـ 18 بكل مرونة ودون أي ضغط تشغيلي</p>
                     </div>
-                    <div class="bg-cyan-500/10 border border-cyan-500/30 px-4 py-2 rounded-xl text-xs font-mono text-cyan-600 dark:text-cyan-300 flex items-center gap-2">
-                        حالة الشركة: <strong class="text-emerald-500 dark:text-emerald-400">نشطة ومعتمدة</strong>
+                    <div class="bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/30 px-4 py-2 rounded-xl text-xs font-mono text-cyan-700 dark:text-cyan-300 flex items-center gap-2">
+                        حالة الشركة: <strong class="text-emerald-600 dark:text-emerald-400">نشطة ومعتمدة</strong>
                     </div>
                 </div>
 
                 <!-- إحصائيات الشحن السريعة -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
-                        <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1"><i class="fa-solid fa-spinner text-cyan-500"></i> الشحنات قيد التوصيل الآن</span>
-                        <p class="text-xl font-black text-cyan-600 dark:text-cyan-400 mt-2 font-mono">14 شحنة</p>
+                        <span class="text-xs text-slate-500 flex items-center gap-1"><i class="fa-solid fa-spinner text-cyan-600"></i> الشحنات قيد التوصيل الآن</span>
+                        <p class="text-xl font-black text-cyan-700 dark:text-cyan-400 mt-2 font-mono">34 شحنة</p>
                     </div>
                     <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
-                        <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1"><i class="fa-solid fa-circle-check text-emerald-500"></i> الشحنات المسلمة بنجاح</span>
-                        <p class="text-xl font-black text-emerald-600 dark:text-emerald-400 mt-2 font-mono">128 شحنة</p>
+                        <span class="text-xs text-slate-500 flex items-center gap-1"><i class="fa-solid fa-circle-check text-emerald-600"></i> الشحنات المسلمة بنجاح</span>
+                        <p class="text-xl font-black text-emerald-600 dark:text-emerald-400 mt-2 font-mono">428 شحنة</p>
                     </div>
                     <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
-                        <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1"><i class="fa-solid fa-hand-holding-dollar text-amber-500"></i> أرباح الشحن المستحقة</span>
-                        <p class="text-xl font-black text-amber-500 dark:text-amber-400 mt-2 font-mono">142,000 <span class="text-xs">ج.س</span></p>
+                        <span class="text-xs text-slate-500 flex items-center gap-1"><i class="fa-solid fa-hand-holding-dollar text-amber-500"></i> أرباح الشحن المستحقة</span>
+                        <p class="text-xl font-black text-amber-600 dark:text-amber-400 mt-2 font-mono">342,000 <span class="text-xs">ج.س</span></p>
                     </div>
                 </div>
 
-                <!-- إدارة وتحديث تسعير الولايات -->
-                <div class="space-y-4 pt-2">
-                    <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200 flex items-center gap-2"><i class="fa-solid fa-map-location-dot text-cyan-500"></i> تحديث أسعار وتكلفة الشحن للولايات</h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                            <label class="text-xs text-slate-500 dark:text-slate-400 font-bold">بورتسودان</label>
-                            <input type="text" value="4,000 ج.س" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-sm font-mono text-cyan-600 dark:text-cyan-300">
-                        </div>
-                        <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                            <label class="text-xs text-slate-500 dark:text-slate-400 font-bold">كسلا</label>
-                            <input type="text" value="6,000 ج.س" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-sm font-mono text-cyan-600 dark:text-cyan-300">
-                        </div>
-                        <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                            <label class="text-xs text-slate-500 dark:text-slate-400 font-bold">عطبرة</label>
-                            <input type="text" value="8,000 ج.س" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-sm font-mono text-cyan-600 dark:text-cyan-300">
-                        </div>
-                        <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
-                            <label class="text-xs text-slate-500 dark:text-slate-400 font-bold">الخرطوم</label>
-                            <input type="text" value="10,000 ج.س" class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-sm font-mono text-cyan-600 dark:text-cyan-300">
-                        </div>
-                    </div>
+                <!-- زر حفظ أسعار الشحن -->
+                <div class="pt-2">
                     <button onclick="alert('تم تحديث تسعير الولايات وحفظه بنجاح لصالح شركة الشحن دون أي ضغط تشغيلي!')" class="bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-2.5 rounded-xl text-xs font-bold shadow transition flex items-center gap-2">
-                        <i class="fa-solid fa-floppy-disk"></i> حفظ واعتماد أسعار الشحن الجديدة
+                        <i class="fa-solid fa-floppy-disk"></i> حفظ واعتماد جدول أسعار الولايات الـ 18
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- ================= 4. ADMIN PORTAL (الإدارة والرقابة) ================= -->
+        <!-- ================= 4. ADMIN PORTAL (الإدارة + تسجيل برقم الهاتف/البريد) ================= -->
         <section id="portal-admin" class="portal-section hidden space-y-6">
+            <!-- Authentication Bar for Admin -->
+            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-100 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-slate-800 dark:text-slate-200 block">لوحة الإدارة والرقابة المالية العليا</span>
+                        <span class="text-[11px] text-slate-500">سجل الدخول الإداري برقم الهاتف أو البريد الإلكتروني المشفر</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <input type="text" id="adminAuthInput" placeholder="رقم الهاتف أو الإيميل الإداري..." class="bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 px-3.5 py-2 rounded-xl text-xs w-full sm:w-64 font-mono">
+                    <button onclick="handleAdminLogin()" class="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow transition">
+                        تسجيل دخول المشرف
+                    </button>
+                </div>
+            </div>
+
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 p-5 rounded-2xl shadow-xl transition-colors duration-300">
-                    <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-chart-line text-cyan-500"></i> إجمالي دورة رأس المال بالمنصة</span>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 p-5 rounded-2xl shadow-sm transition-colors duration-300">
+                    <span class="text-xs text-slate-500 flex items-center gap-1.5"><i class="fa-solid fa-chart-line text-cyan-600"></i> إجمالي دورة رأس المال بالمنصة</span>
                     <p class="text-2xl font-black text-slate-800 dark:text-slate-100 mt-2 font-mono">14,250,000 <span class="text-xs font-normal">ج.س</span></p>
                 </div>
-                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 p-5 rounded-2xl shadow-xl transition-colors duration-300">
-                    <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-percent text-cyan-500"></i> إجمالي أرباح عمولات المنصة (المدفوعة)</span>
-                    <p class="text-2xl font-black text-cyan-600 dark:text-cyan-400 mt-2 font-mono">356,250 <span class="text-xs font-normal">ج.س</span></p>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 p-5 rounded-2xl shadow-sm transition-colors duration-300">
+                    <span class="text-xs text-slate-500 flex items-center gap-1.5"><i class="fa-solid fa-percent text-cyan-600"></i> إجمالي أرباح عمولات المنصة (المدفوعة)</span>
+                    <p class="text-2xl font-black text-cyan-700 dark:text-cyan-400 mt-2 font-mono">356,250 <span class="text-xs font-normal">ج.س</span></p>
                 </div>
-                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 p-5 rounded-2xl shadow-xl transition-colors duration-300">
-                    <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-arrows-spin text-amber-500"></i> العمليات النشطة الآن</span>
-                    <p class="text-2xl font-black text-amber-500 dark:text-amber-400 mt-2 font-mono">18 عملية ضمان</p>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-sky-900/50 p-5 rounded-2xl shadow-sm transition-colors duration-300">
+                    <span class="text-xs text-slate-500 flex items-center gap-1.5"><i class="fa-solid fa-arrows-spin text-amber-500"></i> العمليات النشطة الآن</span>
+                    <p class="text-2xl font-black text-amber-600 dark:text-amber-400 mt-2 font-mono">18 عملية ضمان</p>
                 </div>
             </div>
         </section>
@@ -326,14 +471,14 @@
             
             if (html.classList.contains('dark')) {
                 html.classList.remove('dark');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                text.innerText = 'الوضع الفاتح';
-            } else {
-                html.classList.add('dark');
                 icon.classList.remove('fa-sun');
                 icon.classList.add('fa-moon');
                 text.innerText = 'الوضع المظلم';
+            } else {
+                html.classList.add('dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                text.innerText = 'الوضع الفاتح';
             }
         }
 
@@ -341,14 +486,14 @@
             document.querySelectorAll('.portal-section').forEach(el => el.classList.add('hidden'));
             
             document.querySelectorAll('.role-tab').forEach(btn => {
-                btn.classList.remove('bg-cyan-600', 'text-white', 'font-bold', 'shadow-lg', 'shadow-cyan-600/30');
-                btn.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300', 'border', 'border-slate-300', 'dark:border-slate-700');
+                btn.classList.remove('bg-cyan-600', 'text-white', 'font-bold', 'shadow-md');
+                btn.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300', 'border', 'border-slate-200', 'dark:border-slate-700');
             });
 
             document.getElementById(`portal-${role}`).classList.remove('hidden');
             const activeBtn = document.getElementById(`role-${role}-btn`);
-            activeBtn.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300', 'border', 'border-slate-300', 'dark:border-slate-700');
-            activeBtn.classList.add('bg-cyan-600', 'text-white', 'font-bold', 'shadow-lg', 'shadow-cyan-600/30');
+            activeBtn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300', 'border', 'border-slate-200', 'dark:border-slate-700');
+            activeBtn.classList.add('bg-cyan-600', 'text-white', 'font-bold', 'shadow-md');
 
             const roleNames = {
                 customer: 'المشتري (القائمة الرئيسية للمنتجات)',
@@ -365,13 +510,13 @@
             productPrice = price;
 
             document.querySelectorAll('.product-card').forEach(card => {
-                card.classList.remove('border-2', 'border-cyan-500', 'bg-cyan-500/5', 'dark:bg-cyan-500/10');
+                card.classList.remove('border-2', 'border-cyan-600', 'bg-cyan-50/50', 'dark:bg-cyan-500/10');
                 card.classList.add('border', 'border-slate-200', 'dark:border-slate-800', 'bg-white', 'dark:bg-slate-900/50');
             });
             const selectedCard = document.querySelector(`.product-card[data-id="${id}"]`);
             if (selectedCard) {
                 selectedCard.classList.remove('border', 'border-slate-200', 'dark:border-slate-800', 'bg-white', 'dark:bg-slate-900/50');
-                selectedCard.classList.add('border-2', 'border-cyan-500', 'bg-cyan-500/5', 'dark:bg-cyan-500/10');
+                selectedCard.classList.add('border-2', 'border-cyan-600', 'bg-cyan-50/50', 'dark:bg-cyan-500/10');
             }
 
             document.getElementById('summaryProduct').innerText = name;
@@ -381,11 +526,39 @@
             document.getElementById('summaryTotal').innerText = total.toLocaleString() + ' ج.س';
         }
 
-        function updateShipping(cost) {
+        function updateStateShipping() {
+            const select = document.getElementById('stateSelect');
+            const cost = parseInt(select.value);
             currentShipping = cost;
-            const total = productPrice + cost;
+            document.getElementById('shippingCostDisplay').innerText = cost.toLocaleString() + ' ج.س';
             document.getElementById('summaryShipping').innerText = cost.toLocaleString() + ' ج.س';
+            
+            const total = productPrice + cost;
             document.getElementById('summaryTotal').innerText = total.toLocaleString() + ' ج.س';
+        }
+
+        function handleCustomerLogin() {
+            const val = document.getElementById('customerAuthInput').value.trim();
+            if(!val) { alert('الرجاء إدخال رقم الهاتف أو البريد الإلكتروني للمتابعة'); return; }
+            alert('تم تسجيل الدخول والتعرف على حساب المشتري (' + val + ') بنجاح!');
+        }
+
+        function handleVendorLogin() {
+            const val = document.getElementById('vendorAuthInput').value.trim();
+            if(!val) { alert('الرجاء إدخال رقم الهاتف أو البريد الإلكتروني للتاجر'); return; }
+            alert('مرحباً بك أيها التاجر (' + val + ') تم فتح لوحة التحكم والأرباح بنجاح.');
+        }
+
+        function handleCarrierLogin() {
+            const val = document.getElementById('carrierAuthInput').value.trim();
+            if(!val) { alert('الرجاء إدخال بيانات شركة الشحن'); return; }
+            alert('تم اعتماد تسجيل دخول شركة الشحن اللوجستية (' + val + ') بنجاح.');
+        }
+
+        function handleAdminLogin() {
+            const val = document.getElementById('adminAuthInput').value.trim();
+            if(!val) { alert('الرجاء إدخال بيانات المشرف'); return; }
+            alert('تم التحقق من الصلاحيات الإدارية العليا لحساب (' + val + ').');
         }
 
         async function executeEscrow() {
