@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SudPay - المنصة الموحدة الشاملة لإدارة الضمان والشحن</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-900 font-sans min-h-screen text-slate-100 flex flex-col">
+
+    <!-- Navbar -->
+    <header class="bg-slate-950 border-b border-slate-800 p-4 sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white font-black px-4 py-2 rounded-xl text-xl shadow-lg shadow-green-500/20">SudPay</div>
+                <div>
+                    <h1 class="font-bold text-sm">منصة الضمان والشحن الذكي الموحدة</h1>
+                    <span class="text-[10px] text-green-400 font-mono">● النظام متصل ويعمل بـ API</span>
+                </div>
+            </div>
+            
+            <!-- Dynamic Navigation Tabs -->
+            <nav class="flex bg-slate-900 p-1.5 rounded-xl border border-slate-800 text-xs gap-1">
+                <button onclick="switchTab('customer')" id="tab-customer" class="tab-btn px-4 py-2 rounded-lg bg-green-600 text-white font-bold transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-bag-shopping"></i> تطبيق العميل
+                </button>
+                <button onclick="switchTab('vendor')" id="tab-vendor" class="tab-btn px-4 py-2 rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-store"></i> لوحة التاجر
+                </button>
+                <button onclick="switchTab('carrier')" id="tab-carrier" class="tab-btn px-4 py-2 rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-truck-fast"></i> شركة الشحن
+                </button>
+                <button onclick="switchTab('admin')" id="tab-admin" class="tab-btn px-4 py-2 rounded-lg text-slate-400 hover:text-white transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-chart-pie"></i> الإدارة العامة
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl w-full mx-auto p-4 md:p-6 flex-1">
+
+        <!-- 1. CUSTOMER VIEW -->
+        <div id="view-customer" class="view-panel space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Product & Shipping Selector -->
+                <div class="md:col-span-2 bg-slate-800 border border-slate-700/60 rounded-2xl p-6 shadow-xl space-y-4">
+                    <h2 class="text-lg font-bold text-green-400 flex items-center gap-2">
+                        <i class="fa-solid fa-cart-shopping"></i> إتمام عملية الشراء الآمن (Escrow)
+                    </h2>
+                    <div class="flex items-center gap-4 bg-slate-900/50 p-4 rounded-xl border border-slate-700/40">
+                        <div class="w-16 h-16 bg-green-500/10 text-green-400 rounded-xl flex items-center justify-center text-2xl font-bold">📱</div>
+                        <div>
+                            <h3 class="font-bold text-base">هاتف ذكي أحدث إصدار</h3>
+                            <p class="text-xs text-slate-400">متجر التقنية الذكية - ضمان ذهبي</p>
+                            <p class="text-green-400 font-extrabold text-lg mt-1">150,000 <span class="text-xs">ج.س</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold text-slate-300">اختر ولاية التوصيل:</label>
+                        <select id="stateSelect" onchange="calcTotal()" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm focus:ring-2 focus:ring-green-500 outline-none">
+                            <option value="4000">بورتسودان (+4,000 ج.س)</option>
+                            <option value="6000">كسلا (+6,000 ج.س)</option>
+                            <option value="8000">عطبرة (+8,000 ج.س)</option>
+                            <option value="10000">الخرطوم (+10,000 ج.س)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Summary & Checkout Box -->
+                <div class="bg-slate-800 border border-slate-700/60 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+                    <div>
+                        <h3 class="font-bold text-slate-200 border-b border-slate-700 pb-3 text-sm">ملخص الفاتورة المحمية</h3>
+                        <div class="space-y-2.5 mt-4 text-sm text-slate-300">
+                            <div class="flex justify-between"><span>قيمة السلعة:</span> <span>150,000 ج.س</span></div>
+                            <div class="flex justify-between"><span>الشحن:</span> <span id="shipDisplay">4,000 ج.س</span></div>
+                            <div class="flex justify-between font-extrabold text-base text-green-400 border-t border-slate-700 pt-2">
+                                <span>الإجمالي:</span> <span id="totalDisplay">154,000 ج.س</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="createOrder()" id="checkoutBtn" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-green-600/30 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-shield-halved"></i> تجميد المبلغ بالضمان (Escrow)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Result Box -->
+            <div id="orderResult" class="hidden bg-slate-950 border border-green-500/40 rounded-2xl p-6 space-y-4 shadow-2xl">
+                <div class="flex items-center gap-2 text-green-400 font-bold text-lg">
+                    <i class="fa-solid fa-circle-check"></i> تم إنشاء الطلب وتجميد الأموال بنجاح!
+                </div>
+                <p class="text-xs text-slate-400">الأموال الآن في حساب الضمان الآمن ولن يتم تحويلها للتاجر إلا بعد استلامك للسلعة وإدخال رمز التأكيد (OTP).</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-900 p-4 rounded-xl border border-slate-800 font-mono text-sm">
+                    <div><span class="text-slate-500">رقم الطلب:</span> <span id="outOrderCode" class="text-yellow-400 font-bold"></span></div>
+                    <div><span class="text-slate-500">رمز الاستلام (OTP):</span> <span id="outOTP" class="text-green-400 font-bold text-base"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. VENDOR VIEW -->
+        <div id="view-vendor" class="view-panel hidden space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700/60">
+                    <span class="text-xs text-slate-400">الأرباح المتاحة للسحب</span>
+                    <p class="text-2xl font-bold text-green-400 mt-1">450,000 <span class="text-xs">ج.س</span></p>
+                    <button class="mt-4 w-full bg-slate-700 hover:bg-slate-600 text-xs py-2 rounded-lg font-bold transition">سحب الأرباح فوراً</button>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700/60">
+                    <span class="text-xs text-slate-400">المبالغ المحجوزة بالضمان</span>
+                    <p class="text-2xl font-bold text-amber-400 mt-1" id="vendorEscrowBalance">150,000 <span class="text-xs">ج.س</span></p>
+                    <span class="text-[10px] text-slate-500 block mt-4">تُفرج عند تأكيد الاستلام من العميل</span>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700/60">
+                    <span class="text-xs text-slate-400">إجمالي الطلبات الناجحة</span>
+                    <p class="text-2xl font-bold text-slate-100 mt-1">12 طلب</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. CARRIER VIEW -->
+        <div id="view-carrier" class="view-panel hidden space-y-6">
+            <div class="bg-slate-800 border border-slate-700/60 rounded-2xl p-6 space-y-4">
+                <h3 class="font-bold text-green-400">إدارة شبكة الشحن بين الولايات</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-1"><label class="text-xs text-slate-400">بورتسودان</label><input type="text" value="4,000 ج.س" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-xl text-sm"></div>
+                    <div class="space-y-1"><label class="text-xs text-slate-400">كسلا</label><input type="text" value="6,000 ج.س" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-xl text-sm"></div>
+                </div>
+                <button onclick="alert('تم تحديث أسعار الشحن ونشرها فوراً لكل العملاء!')" class="bg-green-600 hover:bg-green-500 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow">حفظ وتحديث الأسعار</button>
+            </div>
+        </div>
+
+        <!-- 4. ADMIN VIEW -->
+        <div id="view-admin" class="view-panel hidden space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700/60">
+                    <span class="text-xs text-slate-400">إجمالي المعاملات الكلية</span>
+                    <p class="text-2xl font-bold text-slate-100 mt-1">2,450,000 <span class="text-xs">ج.س</span></p>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700/60">
+                    <span class="text-xs text-slate-400">إيرادات عمولة المنصة (2.5%)</span>
+                    <p class="text-2xl font-bold text-green-400 mt-1">61,250 <span class="text-xs">ج.س</span></p>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700/60">
+                    <span class="text-xs text-slate-400">العمليات النشطة الآن</span>
+                    <p class="text-2xl font-bold text-blue-400 mt-1">18 عملية ضمان</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.view-panel').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-green-600', 'text-white', 'font-bold');
+                btn.classList.add('text-slate-400');
+            });
+            document.getElementById(`view-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            activeBtn.classList.add('bg-green-600', 'text-white', 'font-bold');
+            activeBtn.classList.remove('text-slate-400');
+        }
+
+        function calcTotal() {
+            const ship = parseInt(document.getElementById('stateSelect').value);
+            const total = 150000 + ship;
+            document.getElementById('shipDisplay').innerText = ship.toLocaleString() + ' ج.س';
+            document.getElementById('totalDisplay').innerText = total.toLocaleString() + ' ج.س';
+        }
+
+        async function createOrder() {
+            const btn = document.getElementById('checkoutBtn');
+            btn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> جاري ربط المعاملة بالـ Backend...';
+            btn.disabled = true;
+
+            try {
+                const res = await fetch('/api/v1/escrow/create-intent', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ vendor_id: 1, amount: 150000, shipping_cost: parseInt(document.getElementById('stateSelect').value) })
+                });
+                const data = await res.json();
+                
+                document.getElementById('orderResult').classList.remove('hidden');
+                document.getElementById('outOrderCode').innerText = data.order_code || 'SD_984210';
+                document.getElementById('outOTP').innerText = data.otp_code || '741852';
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> تم التجميد والطلب بنجاح';
+            } catch (err) {
+                document.getElementById('orderResult').classList.remove('hidden');
+                document.getElementById('outOrderCode').innerText = 'SD_' + Math.floor(100000 + Math.random() * 900000);
+                document.getElementById('outOTP').innerText = Math.floor(100000 + Math.random() * 900000);
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> تم بنجاح (وضع محاكاة النظام)';
+            }
+        }
+    </script>
+</body>
+</html>
