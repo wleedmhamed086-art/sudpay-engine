@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SudPay - المنصة الموحدة للحلول المالية والشحن</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col">
+
+    <!-- شريط الملاحة الموحد الشامل (Unified Navigation) -->
+    <header class="bg-slate-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="bg-green-600 text-white p-2 rounded-xl font-black text-xl tracking-wider">SudPay</div>
+                <span class="text-xs bg-green-500/20 text-green-400 px-2.5 py-1 rounded-full font-bold border border-green-500/30">النظام الموحد v6.0</span>
+            </div>
+
+            <!-- محول الأطراف والأدوار (Role Switcher Tab) -->
+            <nav class="flex bg-slate-800 p-1 rounded-xl text-xs md:text-sm font-semibold">
+                <button onclick="switchView('customer')" id="btn-customer" class="role-btn px-4 py-2 rounded-lg transition bg-green-600 text-white">
+                    <i class="fa-solid fa-bag-shopping ml-1"></i> العميل
+                </button>
+                <button onclick="switchView('vendor')" id="btn-vendor" class="role-btn px-4 py-2 rounded-lg text-slate-300 hover:text-white transition">
+                    <i class="fa-solid fa-store ml-1"></i> التاجر
+                </button>
+                <button onclick="switchView('carrier')" id="btn-carrier" class="role-btn px-4 py-2 rounded-lg text-slate-300 hover:text-white transition">
+                    <i class="fa-solid fa-truck-fast ml-1"></i> شركات الشحن
+                </button>
+                <button onclick="switchView('admin')" id="btn-admin" class="role-btn px-4 py-2 rounded-lg text-slate-300 hover:text-white transition">
+                    <i class="fa-solid fa-chart-line ml-1"></i> الإدارة العامة
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- منطقة عرض التطبيق التفاعلي الموحد (Unified Dynamic Viewport) -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6">
+        
+        <!-- 1. واجهة العميل (Customer View) -->
+        <section id="view-customer" class="view-section">
+            <iframe src="/static/customer_app.html" class="w-full h-[800px] rounded-2xl border shadow-sm"></iframe>
+        </section>
+
+        <!-- 2. واجهة التاجر (Vendor View) -->
+        <section id="view-vendor" class="view-section hidden">
+            <iframe src="/static/vendor_dashboard.html" class="w-full h-[800px] rounded-2xl border shadow-sm"></iframe>
+        </section>
+
+        <!-- 3. واجهة شركة الشحن (Carrier View) -->
+        <section id="view-carrier" class="view-section hidden">
+            <iframe src="/static/carrier_dashboard.html" class="w-full h-[800px] rounded-2xl border shadow-sm"></iframe>
+        </section>
+
+        <!-- 4. لوحة الإدارة العامة (Admin View) -->
+        <section id="view-admin" class="view-section hidden">
+            <iframe src="/static/admin_dashboard.html" class="w-full h-[800px] rounded-2xl border shadow-sm"></iframe>
+        </section>
+
+    </main>
+
+    <!-- السكريبت الموحد للتحكم في التنقل والتبديل اللحظي -->
+    <script>
+        function switchView(role) {
+            // إخفاء كافة الواجهات
+            document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+            
+            // إعادة تلوين الأزرار
+            document.querySelectorAll('.role-btn').forEach(btn => {
+                btn.classList.remove('bg-green-600', 'text-white');
+                btn.classList.add('text-slate-300');
+            });
+
+            // إظهار الواجهة المحددة وتنشيط زرها
+            document.getElementById(`view-${role}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`btn-${role}`);
+            activeBtn.classList.add('bg-green-600', 'text-white');
+            activeBtn.classList.remove('text-slate-300');
+        }
+    </script>
+</body>
+</html>
