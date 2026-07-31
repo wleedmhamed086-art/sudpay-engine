@@ -12,7 +12,7 @@
 </head>
 <body class="bg-sky-50/50 text-slate-900 dark:bg-slate-950 dark:text-sky-100 font-sans min-h-screen flex flex-col transition-colors duration-300 selection:bg-sky-400 selection:text-white">
 
-    <!-- الهيدر الرئيسي وتسهيل التنقل المباشر -->
+    <!-- الهيدر الرئيسي والتنقل المباشر -->
     <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur border-b border-sky-100 dark:border-sky-900/40 sticky top-0 z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3 space-x-reverse">
@@ -22,7 +22,7 @@
                 <span class="text-xs font-bold text-slate-500 dark:text-sky-400 hidden sm:inline-block">منصة المعاملات والشحن المباشر</span>
             </div>
             
-            <!-- أزرار التنقل السريع الفوري بين الأدوار الثلاثة -->
+            <!-- أزرار التنقل السريع الفوري -->
             <div class="flex items-center gap-1.5 bg-sky-100/60 dark:bg-slate-950 p-1 rounded-xl border border-sky-200/60 dark:border-sky-900">
                 <button onclick="switchView('customer')" id="tabCustomer" class="px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-sky-600 text-white shadow">
                     <i class="fa-solid fa-bag-shopping"></i> المشتري
@@ -46,27 +46,11 @@
     <!-- التطبيق الرئيسي -->
     <div id="mainAppContainer" class="flex-1 flex flex-col">
 
-        <!-- ================= 1. واجهة المشتري (مباشرة) ================= -->
+        <!-- ================= 1. واجهة المشتري (بدون بيانات عميل) ================= -->
         <div id="portalCustomer" class="workspace-portal flex-1 flex flex-col">
             <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 space-y-6">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-2 space-y-6">
-                        <div class="bg-white dark:bg-slate-900 border border-sky-100 dark:border-sky-900/50 rounded-2xl p-6 shadow-sm space-y-4">
-                            <h2 class="text-sm font-bold text-sky-700 dark:text-sky-400 flex items-center gap-2 border-b border-sky-100 dark:border-sky-900/40 pb-3">
-                                <i class="fa-solid fa-address-book"></i> بيانات العميل المستلم
-                            </h2>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="text-xs text-slate-500 dark:text-sky-400 block mb-1 font-bold">الاسم الكامل:</label>
-                                    <input type="text" id="customerNameInput" placeholder="أدخل اسمك الكامل" value="محمد أحمد" class="w-full bg-sky-50/50 dark:bg-slate-950 border border-sky-200 dark:border-sky-900 rounded-xl p-3 text-xs">
-                                </div>
-                                <div>
-                                    <label class="text-xs text-slate-500 dark:text-sky-400 block mb-1 font-bold">رقم الهاتف (يبدأ بـ 0) أو البريد:</label>
-                                    <input type="text" id="customerPhoneInput" placeholder="0912345678" value="0912345678" class="w-full bg-sky-50/50 dark:bg-slate-950 border border-sky-200 dark:border-sky-900 rounded-xl p-3 text-xs font-mono">
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="bg-white dark:bg-slate-900 border border-sky-100 dark:border-sky-900/50 rounded-2xl p-6 shadow-sm space-y-4">
                             <h3 class="text-sm font-bold text-slate-800 dark:text-sky-200 flex items-center gap-2">
                                 <i class="fa-solid fa-store text-sky-600"></i> منتجات التجار المتاحة
@@ -77,7 +61,7 @@
                         <div class="bg-white dark:bg-slate-900 border border-sky-100 dark:border-sky-900/50 rounded-2xl p-6 shadow-sm space-y-4">
                             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                                 <h3 class="text-sm font-bold text-slate-800 dark:text-sky-200 flex items-center gap-2">
-                                    <i class="fa-solid fa-truck-fast text-sky-600"></i> شركات الشحن وولاية التوصيل (18 ولاية)
+                                    <i class="fa-solid fa-truck-fast text-sky-600"></i> اختيار شركة الشحن وولاية التوصيل
                                 </h3>
                                 <select id="carrierSelect" class="bg-sky-50 dark:bg-slate-950 border border-sky-200 dark:border-sky-800 text-xs font-bold rounded-xl px-3 py-2 text-sky-700 dark:text-sky-300">
                                     <option value="شركة البريد السوداني اللوجستية">شركة البريد السوداني</option>
@@ -137,7 +121,7 @@
 
                         <div class="space-y-3">
                             <button onclick="executeEscrow()" id="escrowSubmitBtn" class="w-full bg-sky-600 hover:bg-sky-500 text-white font-bold py-3.5 rounded-xl shadow-md shadow-sky-600/20 transition flex items-center justify-center gap-2 text-sm">
-                                <i class="fa-solid fa-lock"></i> تأكيد وحفظ الطلب مباشرة
+                                <i class="fa-solid fa-bolt"></i> تأكيد الطلب فوراً بنقرة واحدة
                             </button>
                         </div>
                     </div>
@@ -145,10 +129,10 @@
 
                 <div id="resultBox" class="hidden bg-white dark:bg-slate-900 border border-sky-500/50 rounded-2xl p-6 space-y-4 shadow-xl">
                     <div class="flex items-center gap-3 text-sky-700 dark:text-sky-300 font-bold text-base">
-                        <i class="fa-solid fa-circle-check text-xl"></i> تم تسجيل الطلب في القاعدة المركزية بنجاح!
+                        <i class="fa-solid fa-circle-check text-xl"></i> تم إصدار الطلب بنجاح!
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-sky-50/50 dark:bg-slate-950 p-4 rounded-xl border border-sky-200 dark:border-sky-900 text-sm font-mono">
-                        <div><span class="text-slate-500 block text-xs">رقم الطلب:</span> <span id="resOrderCode" class="text-sky-700 dark:text-sky-300 font-bold"></span></div>
+                        <div><span class="text-slate-500 block text-xs">رقم الطلب المباشر:</span> <span id="resOrderCode" class="text-sky-700 dark:text-sky-300 font-bold"></span></div>
                         <div><span class="text-slate-500 block text-xs">رمز الاستلام (OTP):</span> <span id="resOTP" class="text-emerald-600 dark:text-emerald-400 font-bold text-base"></span></div>
                         <div><span class="text-slate-500 block text-xs">الحالة:</span> <span class="text-amber-600 font-bold">محجوز بقاعدة البيانات</span></div>
                     </div>
@@ -156,7 +140,7 @@
             </main>
         </div>
 
-        <!-- ================= 2. واجهة البائع (مباشرة) ================= -->
+        <!-- ================= 2. واجهة البائع ================= -->
         <div id="portalVendor" class="workspace-portal hidden flex-1 flex flex-col">
             <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 space-y-6">
                 <div class="bg-white dark:bg-slate-900 border border-sky-100 dark:border-sky-900/50 rounded-2xl p-6 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -164,7 +148,7 @@
                         <h2 class="text-base font-bold text-sky-700 dark:text-sky-400 flex items-center gap-2">
                             <i class="fa-solid fa-store"></i> لوحة البائع العامة (الوصول المباشر)
                         </h2>
-                        <p class="text-xs text-slate-500 mt-1">عرض ومتابعة طلبات المشترين وإدخال الرموز لتحرير الأرباح</p>
+                        <p class="text-xs text-slate-500 mt-1">عرض ومتابعة الطلبات المباشرة وإدخال الرموز لتحرير الأرباح</p>
                     </div>
                     <div class="bg-sky-50 dark:bg-sky-500/10 border border-sky-200 dark:border-sky-500/30 px-4 py-2.5 rounded-xl text-xs font-mono text-sky-700 dark:text-sky-300">
                         رصيد الأرباح: <strong class="text-emerald-600 dark:text-emerald-400">980,000 ج.س</strong>
@@ -173,15 +157,15 @@
 
                 <div class="bg-white dark:bg-slate-900 border border-sky-100 dark:border-sky-900/50 rounded-2xl p-6 shadow-sm space-y-4">
                     <h3 class="font-bold text-sm text-slate-800 dark:text-sky-200 border-b border-sky-100 dark:border-sky-900/40 pb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-users text-sky-600"></i> قائمة طلبيات العملاء
+                        <i class="fa-solid fa-list-check text-sky-600"></i> قائمة الطلبيات المباشرة
                     </h3>
                     <div class="overflow-x-auto">
                         <table class="w-full text-right text-xs">
                             <thead class="bg-sky-50 dark:bg-slate-950 text-slate-700 dark:text-sky-300 font-bold border-b border-sky-200 dark:border-sky-900">
                                 <tr>
-                                    <th class="p-3">اسم العميل</th>
-                                    <th class="p-3">الهاتف/البريد</th>
+                                    <th class="p-3">رقم الطلب</th>
                                     <th class="p-3">المنتج المطلوب</th>
+                                    <th class="p-3">الولاية</th>
                                     <th class="p-3">المبلغ الإجمالي</th>
                                     <th class="p-3">تحرير الأرباح</th>
                                 </tr>
@@ -193,7 +177,7 @@
             </main>
         </div>
 
-        <!-- ================= 3. واجهة شركة الشحن (مباشرة) ================= -->
+        <!-- ================= 3. واجهة شركة الشحن ================= -->
         <div id="portalCarrier" class="workspace-portal hidden flex-1 flex flex-col">
             <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 space-y-6">
                 <div class="bg-white dark:bg-slate-900 border border-sky-100 dark:border-sky-900/50 rounded-2xl p-6 shadow-sm space-y-6">
@@ -202,7 +186,7 @@
                             <h3 class="font-bold text-base text-sky-700 dark:text-sky-400 flex items-center gap-2">
                                 <i class="fa-solid fa-truck-fast"></i> لوحة شركات الشحن والتوصيل (الوصول المباشر)
                             </h3>
-                            <p class="text-xs text-slate-500 dark:text-sky-400 mt-1">متابعة بوليصات الشحن الموجهة للولايات الـ 18 بدون عوائق دخول</p>
+                            <p class="text-xs text-slate-500 dark:text-sky-400 mt-1">متابعة بوليصات الشحن الموجهة للولايات مباشرة</p>
                         </div>
                     </div>
 
@@ -211,7 +195,7 @@
                             <thead class="bg-sky-50 dark:bg-slate-950 text-slate-700 dark:text-sky-300 font-bold border-b border-sky-200 dark:border-sky-900">
                                 <tr>
                                     <th class="p-3">رقم البوليصة</th>
-                                    <th class="p-3">اسم العميل وجهة الاتصال</th>
+                                    <th class="p-3">اسم المنتج</th>
                                     <th class="p-3">الولاية المستهدفة</th>
                                     <th class="p-3">رسوم الشحن</th>
                                     <th class="p-3">الحالة</th>
@@ -234,8 +218,6 @@
         let masterDatabase = [
             {
                 orderId: 'SD_849201',
-                customerName: 'أحمد إبراهيم',
-                customerPhone: '0912345678',
                 productName: 'لابتوب احترافي للتطوير والأعمال',
                 storeName: 'متجر التقنية المتقدمة',
                 carrierName: 'شركة البريد السوداني اللوجستية',
@@ -252,7 +234,6 @@
             { id: 2, name: 'هاتف ذكي بشريحتين 5G متطور', price: 150000, store: 'متجر الهواتف الذكية', img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80' }
         ];
 
-        // التنقل المباشر بين الواجهات
         function switchView(role) {
             ['customer', 'vendor', 'carrier'].forEach(r => {
                 const btn = document.getElementById(`tab${r.charAt(0).toUpperCase() + r.slice(1)}`);
@@ -311,19 +292,12 @@
         }
 
         function executeEscrow() {
-            const cName = document.getElementById('customerNameInput').value.trim();
-            const cPhone = document.getElementById('customerPhoneInput').value.trim();
-            
-            if(!cName || !cPhone) { alert('الرجاء إدخال اسم العميل ورقم الهاتف أو البريد'); return; }
-
             const btn = document.getElementById('escrowSubmitBtn');
-            btn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> جاري تخزين الطلب...';
+            btn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> جاري حفظ الطلب...';
             
             setTimeout(() => {
                 const newOrder = {
                     orderId: 'SD_' + Math.floor(100000 + Math.random() * 900000),
-                    customerName: cName,
-                    customerPhone: cPhone,
                     productName: selectedProduct.name,
                     storeName: selectedProduct.store,
                     carrierName: document.getElementById('carrierSelect').value,
@@ -339,8 +313,8 @@
                 document.getElementById('resultBox').classList.remove('hidden');
                 document.getElementById('resOrderCode').innerText = newOrder.orderId;
                 document.getElementById('resOTP').innerText = newOrder.otp;
-                btn.innerHTML = '<i class="fa-solid fa-check"></i> تم التخزين بنجاح';
-            }, 600);
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> تم التأكيد والحفظ';
+            }, 500);
         }
 
         function renderVendorOrders() {
@@ -348,9 +322,9 @@
             if(!tbody) return;
             tbody.innerHTML = masterDatabase.map(o => `
                 <tr>
-                    <td class="p-3 font-bold text-slate-900 dark:text-white">${o.customerName}</td>
-                    <td class="p-3">${o.customerPhone}</td>
+                    <td class="p-3 font-bold text-sky-600">${o.orderId}</td>
                     <td class="p-3">${o.productName}</td>
+                    <td class="p-3">${o.stateName}</td>
                     <td class="p-3">${o.totalPrice.toLocaleString()} ج.س</td>
                     <td class="p-3">
                         <button onclick="alert('تم التحقق من رمز OTP وتحرير الأرباح لصالح التاجر بنجاح!')" class="bg-emerald-50 text-emerald-600 border border-emerald-200 px-3 py-1.5 rounded-lg font-bold hover:bg-emerald-100 transition">
@@ -367,7 +341,7 @@
             tbody.innerHTML = masterDatabase.map(o => `
                 <tr>
                     <td class="p-3 font-bold text-sky-600">${o.orderId}</td>
-                    <td class="p-3">${o.customerName}<br><span class="text-[10px] text-slate-400">${o.customerPhone}</span></td>
+                    <td class="p-3">${o.productName}</td>
                     <td class="p-3">${o.stateName}</td>
                     <td class="p-3">${o.shippingCost.toLocaleString()} ج.س</td>
                     <td class="p-3"><span class="bg-sky-50 text-sky-700 border border-sky-200 px-3 py-1 rounded-lg font-bold">جاهز للتوصيل</span></td>
@@ -387,7 +361,6 @@
             }
         }
 
-        // تشغيل واجهة المشتري بشكل افتراضي عند التحميل
         window.onload = () => {
             renderProducts(products);
         };
