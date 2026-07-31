@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SudPay - لوحة شركة الشحن</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 font-sans p-6">
+    <div class="max-w-4xl mx-auto space-y-6">
+        <div class="bg-slate-900 text-white p-6 rounded-2xl flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold">لوحة إدارة شركة الشحن</h1>
+                <p class="text-xs text-slate-400">تحديث أسعار وعروض الرحلات بين الولايات</p>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-slate-200 space-y-4">
+            <h3 class="font-bold text-slate-800">تسعير الشحن للولايات</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="text-xs font-bold text-slate-600">الخرطوم ⬅️ بورتسودان</label>
+                    <input type="text" value="4000 ج.س" class="w-full bg-slate-50 border p-2 rounded-lg mt-1 text-sm">
+                </div>
+                <div>
+                    <label class="text-xs font-bold text-slate-600">الخرطوم ⬅️ كسلا</label>
+                    <input type="text" value="6000 ج.س" class="w-full bg-slate-50 border p-2 rounded-lg mt-1 text-sm">
+                </div>
+            </div>
+            <button class="bg-green-600 text-white px-6 py-2 rounded-xl text-sm font-bold">تحديث الأسعار فوراً</button>
+        </div>
+    </div>
+</body>
+</html>
